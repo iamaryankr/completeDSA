@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int heightHelper(TreeNode* node){
+        if(node==NULL)return 0;
+        int left = heightHelper(node->left);
+        int right = heightHelper(node->right);
+        if(left == -1 || right == -1)  return -1;
+        if(abs(left-right) > 1)  return -1;
+        return max(left, right)+1;
+    }
+    bool isBalanced(TreeNode* root) {
+        if(root==NULL)   return true;
+        if(heightHelper(root)==-1)  return false;
+        return true;
+    }
+};
