@@ -10,7 +10,7 @@ class solution{
             vector<vector<int>> ans(n, vector<int> (m,0));
             vector<vector<int>> vis(n, vector<int> (m,0));
             queue<pair<pair<int,int>,int>> q;
-
+            vector<int> a;
             for(int i=0 ;i<n ;i++){
                 for(int j=0 ;j<m ;j++){
                     if(mat[i][j]==1){
