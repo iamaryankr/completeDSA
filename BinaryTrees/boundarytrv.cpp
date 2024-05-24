@@ -16,24 +16,24 @@ class sol{
     void addLeftBoundary(Node *node, vector<int> &ans){
         Node *curr = node->left;
         while(curr){
-            if(!isLeaf(curr)) ans.push_back(curr->data);
+            if(!isLeaf(curr)) ans.push_back(curr->val);
             if(curr->left) curr = curr->left;
             else curr = curr->right;
         }
     }
     void addLeaves(Node *node, vector<int> &ans){
         if(isLeaf(node)){
-            ans.push_back(node->data);
+            ans.push_back(node->val);
             return ;
         }
-        if(root->left) addLeaves(root->left, res);
-        if(root->right) addLeaves(root->right, res);
+        if(node->left) addLeaves(node->left, ans);
+        if(node->right) addLeaves(node->right, ans);
     }
     void addRightBoundary(Node *node, vector<int> &ans){
         Node *curr = node->right;
         vector<int> temp;
         while(curr){
-            if(!isLeaf(curr)) temp.push_back(curr->data);
+            if(!isLeaf(curr)) temp.push_back(curr->val);
             if(curr->right) curr = curr->right;
             else curr = curr->left;
         }
@@ -41,13 +41,13 @@ class sol{
             ans.push_back(temp[i]);
         }
     }
-    vector<int> BoundaryTraversal(Node *root){
+    vector<int> BoundaryTraversal(Node *node){
         vector<int> ans;
-        if(!root) return ans;
-        if(!isLeaf(root)) ans.push_back(root->data);
-        addLeftBoundary(root, ans);
-        addLeaves(root, ans);
-        addRightBoundary(root, ans); //but reversed
+        if(!node) return ans;
+        if(!isLeaf(node)) ans.push_back(node->val);
+        addLeftBoundary(node, ans);
+        addLeaves(node, ans);
+        addRightBoundary(node, ans); //but reversed
         return ans;
     }
 };

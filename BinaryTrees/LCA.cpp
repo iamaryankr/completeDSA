@@ -1,11 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+class TreeNode{
+    public:
+        TreeNode *left, *right;
+        int val;
+        TreeNode(): val(0), left(NULL), right(NULL){};
+        TreeNode(int x): val(x), left(NULL), right(NULL){};
 };
 class Solution {
 public:

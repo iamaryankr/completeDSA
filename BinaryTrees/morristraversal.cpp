@@ -1,28 +1,30 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-struct node {
-  int data;
-  struct node * left, * right;
+class TreeNode{
+    public:
+        TreeNode *left, *right;
+        int val;
+        TreeNode(): val(0), left(NULL), right(NULL){};
+        TreeNode(int x): val(x), left(NULL), right(NULL){};
 };
 
-vector<int> preorderTraversal(node * root) {
+vector<int> preorderTraversal(TreeNode * root) {
   vector<int> preorder;
 
-  node * cur = root;
+  TreeNode * cur = root;
   while (cur != NULL) {
     if (cur -> left == NULL) {
-      preorder.push_back(cur -> data);
+      preorder.push_back(cur -> val);
       cur = cur -> right;
     } else {
-      node * prev = cur -> left;
+      TreeNode * prev = cur -> left;
       while (prev -> right != NULL && prev -> right != cur) {
         prev = prev -> right;
       }
 
       if (prev -> right == NULL) {
         prev -> right = cur;
-        preorder.push_back(cur -> data);
+        preorder.push_back(cur -> val);
         cur = cur -> left;
       } else {
         prev -> right = NULL;
@@ -33,11 +35,11 @@ vector<int> preorderTraversal(node * root) {
   return preorder;
 }
 
-struct node * newNode(int data) {
-  struct node * node = (struct node * ) malloc(sizeof(struct node));
-  node -> data = data;
-  node -> left = NULL;
-  node -> right = NULL;
+struct TreeNode * newNode(int val) {
+  struct TreeNode * TreeNode = (struct TreeNode * ) malloc(sizeof(struct TreeNode));
+  TreeNode -> val = val;
+  TreeNode -> left = NULL;
+  TreeNode -> right = NULL;
 
-  return (node);
+  return (TreeNode);
 }

@@ -1,25 +1,23 @@
 #include<bits/stdc++.h>
+using namespace std;
 class TreeNode{
     public:
+        TreeNode *left, *right;
         int val;
-        TreeNode* right, left;
-        TreeNode(int x){
-            left->NULL;
-            right->NULL;
-            data->x;
-        }
+        TreeNode(): val(0), left(NULL), right(NULL){};
+        TreeNode(int x): val(x), left(NULL), right(NULL){};
 };
 pair<int, int> predecessorSuccessor(TreeNode *root, int key){
     int pred = -1;
     int succ = -1;
     TreeNode* temp = root;
-    while(temp && temp->data != key){
-        if(temp->data > key){
-            succ = temp->data;
+    while(temp && temp->val != key){
+        if(temp->val > key){
+            succ = temp->val;
             temp = temp->left;
         }
         else{
-            pred = temp->data;
+            pred = temp->val;
             temp = temp->right;
         }
     }
@@ -28,14 +26,14 @@ pair<int, int> predecessorSuccessor(TreeNode *root, int key){
         // predecessor
         TreeNode* leftTree = temp->left;
         while(leftTree){
-            pred = leftTree->data;
+            pred = leftTree->val;
             leftTree = leftTree->right;
         }
 
         // successor
         TreeNode* rightTree = temp->right;
         while(rightTree){
-            succ = rightTree->data;
+            succ = rightTree->val;
             rightTree = rightTree->left;
         }
     }
